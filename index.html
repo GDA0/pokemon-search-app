@@ -52,7 +52,88 @@
 				</div>
 			</nav>
 		</header>
-		<main class="flex-grow-1"></main>
+		<main class="flex-grow-1 px-3">
+			<div
+				class="container bg-white my-3 p-3 d-flex flex-column rounded"
+				style="min-height: 72vh; max-width: 720px"
+			>
+				<form>
+					<label for="search-input" class="form-label fs-5">
+						Enter Pokémon name or ID:
+					</label>
+					<div class="input-group">
+						<input
+							type="text"
+							class="form-control"
+							id="search-input"
+							placeholder="E.g. 100"
+							aria-label="Pokémon name or ID"
+							aria-describedby="search-button"
+							required
+						/>
+						<button
+							class="btn btn-primary"
+							type="submit"
+							id="search-button"
+						>
+							Search
+						</button>
+					</div>
+				</form>
+				<div class="flex-grow-1 bg-light my-3" style="min-height: 52vh">
+					<div class="name-and-id">
+						<span id="pokemon-name"></span>
+						<span id="pokemon-id"></span>
+					</div>
+
+					<div class="size">
+						<span id="weight"></span>
+						<span id="height"></span>
+					</div>
+
+					<div id="sprite-container" class="sprite-container"></div>
+					<div id="types"></div>
+				</div>
+				<div>
+					<table class="table table-bordered text-center">
+						<tr>
+							<th>Base</th>
+							<th>Stats</th>
+						</tr>
+
+						<tr>
+							<td>HP</td>
+							<td id="hp"></td>
+						</tr>
+
+						<tr>
+							<td>Attack</td>
+							<td id="attack"></td>
+						</tr>
+
+						<tr>
+							<td>Defense</td>
+							<td id="defense"></td>
+						</tr>
+
+						<tr>
+							<td>Sp. Attack</td>
+							<td id="special-attack"></td>
+						</tr>
+
+						<tr>
+							<td>Sp. Defense</td>
+							<td id="special-defense"></td>
+						</tr>
+
+						<tr>
+							<td>Speed</td>
+							<td id="speed" class="speed"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</main>
 		<footer class="container text-center fw-medium text-secondary">
 			<p>
 				&copy;
