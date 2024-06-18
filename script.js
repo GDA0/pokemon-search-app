@@ -35,7 +35,7 @@ async function getPokemon (nameOrID) {
     weight.textContent = `Weight: ${data.weight}`
     height.textContent = `Height: ${data.height}`
     spriteContainer.innerHTML = `
-                <img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">`
+                <img class="w-50 h-auto" id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">`
 
     // Set stats
     hp.textContent = data.stats[0].base_stat
@@ -46,11 +46,11 @@ async function getPokemon (nameOrID) {
     speed.textContent = data.stats[5].base_stat
 
     // Set types
-    types.innerHTML = ''
+    types.innerHTML = '';
     data.types.forEach(
       (obj) =>
-        (types.innerHTML += `<span class="type ${obj.type.name}">${obj.type.name}</span>`)
-    )
+        (types.innerHTML += `<span class="rounded border text-center py-1 px-2 type ${obj.type.name}" style="width: 72px;">${obj.type.name}</span>`)
+    );
 
     // Clear search input
     searchInput.value = ''
