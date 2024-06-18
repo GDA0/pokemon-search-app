@@ -13,6 +13,7 @@ const speed = document.querySelector('#speed')
 
 const searchForm = document.querySelector('form')
 const searchInput = searchForm.querySelector('#search-input')
+const spinner = document.querySelector('#spinner')
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault()
@@ -24,10 +25,12 @@ searchForm.addEventListener('submit', (event) => {
 
 async function getPokemon (nameOrID) {
   try {
+    showSpinner()
     const response = await fetch(
 			`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${nameOrID}`
     )
     const data = await response.json()
+    hideSpinner()
 
     // Set Pokémon info
     pokemonName.textContent = `${data.name.toUpperCase()}`
@@ -46,15 +49,16 @@ async function getPokemon (nameOrID) {
     speed.textContent = data.stats[5].base_stat
 
     // Set types
-    types.innerHTML = '';
+    types.innerHTML = ''
     data.types.forEach(
       (obj) =>
         (types.innerHTML += `<span class="rounded border text-center py-1 px-2 type ${obj.type.name}" style="width: 72px;">${obj.type.name}</span>`)
-    );
+    )
 
     // Clear search input
     searchInput.value = ''
   } catch (err) {
+    hideSpinner()
     resetDisplay()
     alert('Pokémon not found')
     console.log(`Pokémon not found: ${err}`)
@@ -77,4 +81,12 @@ const resetDisplay = () => {
   specialAttack.textContent = ''
   specialDefense.textContent = ''
   speed.textContent = ''
+}
+
+const showSpinner = () => {
+  spinner.classList.remove('d-none')
+}
+
+const hideSpinner = () => {
+  spinner.classList.add('d-none')
 }
